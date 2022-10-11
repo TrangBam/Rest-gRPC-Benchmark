@@ -1,0 +1,37 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="GrpcData\MeteoriteLandings.json" />
+    <None Remove="RestData\MeteoriteLandings.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="GrpcData\MeteoriteLandings.json" />
+    <EmbeddedResource Include="RestData\MeteoriteLandings.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="BenchmarkDotNet" Version="0.13.2" />
+    <PackageReference Include="Google.Protobuf" Version="3.18.0" />
+    <PackageReference Include="Grpc.Net.ClientFactory" Version="2.40.0" />
+    <PackageReference Include="Grpc.Tools" Version="2.40.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Protobuf Include="..\GrpcAPI\Protos\MeteoriteLandings.proto" GrpcServices="Client">
+      <Link>Protos\MeteoriteLandings.proto</Link>
+    </Protobuf>
+  </ItemGroup>
+
+</Project>
